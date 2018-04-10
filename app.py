@@ -18,7 +18,8 @@ def homepage():
     # """.format(time=the_time)
 @app.route('/<test>')
 def homeepage(test):
-	return render_template('hello.html', hasil=test)
+    a = trainnew.ivan('asdad')
+	return render_template('hello.html', hasil=a)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
