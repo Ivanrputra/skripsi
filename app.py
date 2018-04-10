@@ -19,10 +19,10 @@ def homepage():
 @app.route('/<test>')
 def homeepage(test):
 	return render_template('hello.html', hasil=trainnew.class1("asdasd"))
-    
+
 @app.route('/class/<cl>')
 def homeepager(cl):
-    return render_template('class.html', hasil=trainnew.class(cl))
+    return render_template('class.html', hasil=trainnew.classi(str(cl)))
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)

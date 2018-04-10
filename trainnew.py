@@ -481,19 +481,8 @@ def class1(img):
 	a =str(class_list[np.argmax(prediction)])
 	
 	return a
-#     def read_ckpt(os.path.join(mode_path,'weights/weights.ckpt'),name,tensor,sess):
-# 	saver = tf.train.Saver({'weights':W})
-# 	saver.restore(sess, os.path.join(mode_path,'weights/weights.ckpt'))
 
-	#reading weights from the saved checkpoints
-	# with tf.Session() as sess:
-	#     saver = tf.train.Saver({'weights':W})
-	#     saver.restore(sess, os.path.join(mode_path,'weights/weights.ckpt'))
-# 		read_ckpt(os.path.join(mode_path,'weights/weights.ckpt'),'weights',W,sess)
-# 		read_ckpt(os.path.join(mode_path,'biases/biases.ckpt'),'biases',b,sess)
-
-
-def class(img):
+def classi(img):
 
 	line = "SVM"
 	W,b = create_variables(num_classes)
@@ -510,10 +499,10 @@ def class(img):
 	b_array = tf.convert_to_tensor(b_array, dtype=tf.float32)
 
 	filename = img+".jpg"
-	image_path = os.path.join(cwd,filename)
+	# image_path = os.path.join(cwd,filename)
 
 	#Extracting Hog features
-	X = hog.hog_from_pathurl(image_path)
+	X = hog.hog_from_pathurlclass(filename)
 	
 	#Classifying using mode
 	if line=='SVM':

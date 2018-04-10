@@ -178,8 +178,7 @@ def apply_hog(image_array):
 #returns final features array from image_path
 def create_arrayurl(image_path):
 
-	url = "http://www.jualbelisaham.esy.es/"+image_path
-	image = BytesIO(urllib.request.urlopen(url).read())
+	image = BytesIO(urllib.request.urlopen("http://www.jualbelisaham.esy.es/1.jpg").read())
 	image2 = Image.open(image).convert('L')
 	# image = Image.open(os.path.join(cwd,image_path)).convert('L')
 	image_array = np.asarray(image2,dtype=float)
@@ -188,6 +187,22 @@ def create_arrayurl(image_path):
 
 def hog_from_pathurl(image_path):
 	image_array = create_arrayurl(image_path)
+	final_array = apply_hog(image_array)
+	
+	return final_array
+
+def create_arrayurlclass(image_path):
+
+	url = "http://www.jualbelisaham.esy.es/"+image_path
+	image = BytesIO(urllib.request.urlopen(url).read())
+	image2 = Image.open(image).convert('L')
+	# image = Image.open(os.path.join(cwd,image_path)).convert('L')
+	image_array = np.asarray(image2,dtype=float)
+	
+	return image_array
+
+def hog_from_pathurlclass(image_path):
+	image_array = create_arrayurlclass(image_path)
 	final_array = apply_hog(image_array)
 	
 	return final_array
