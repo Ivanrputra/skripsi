@@ -178,7 +178,8 @@ def apply_hog(image_array):
 #returns final features array from image_path
 def create_arrayurl(image_path):
 
-	image = BytesIO(urllib.request.urlopen("http://www.jualbelisaham.esy.es/1.jpg").read())
+	url = "http://www.jualbelisaham.esy.es/"+image_path
+	image = BytesIO(urllib.request.urlopen(url).read())
 	image2 = Image.open(image).convert('L')
 	# image = Image.open(os.path.join(cwd,image_path)).convert('L')
 	image_array = np.asarray(image2,dtype=float)

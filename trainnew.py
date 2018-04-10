@@ -451,7 +451,7 @@ def SVM_classify(X,W,b):
 a,b = read_train_data_paths(num_classes,total_data)
 num_classes += a
 total_data += b
-def ivan(img):
+def class1(img):
 
 	line = "SVM"
 	W,b = create_variables(num_classes)
@@ -493,16 +493,34 @@ def ivan(img):
 # 		read_ckpt(os.path.join(mode_path,'biases/biases.ckpt'),'biases',b,sess)
 
 
+def class(img):
 
+	line = "SVM"
+	W,b = create_variables(num_classes)
+	mode_path = os.path.join(save_path, line)
 
+	with tf.Session() as sess:
+		read_ckpt(os.path.join(mode_path,'weights/weights.ckpt'),'weights',W,sess)
+		read_ckpt(os.path.join(mode_path,'biases/biases.ckpt'),'biases',b,sess)
+		
+		W_array = sess.run(W)
+		b_array = sess.run(b)
 
-def b():
-    aaa = ivan('1')
-    print(aaa)
-    # return aaa
-    # return cwd
-    # train_path = os.path.join(cwd,'new_train_data')
-    # save_path = os.path.join(cwd,'hog_saved_weights')
-    # return train_path
-    # return img
-# b()
+	W_array = tf.convert_to_tensor(W_array, dtype=tf.float32)
+	b_array = tf.convert_to_tensor(b_array, dtype=tf.float32)
+
+	filename = img+".jpg"
+	image_path = os.path.join(cwd,filename)
+
+	#Extracting Hog features
+	X = hog.hog_from_pathurl(image_path)
+	
+	#Classifying using mode
+	if line=='SVM':
+		_,_,prediction = SVM_classify(X,W_array,b_array)
+	elif line=='LOGIST':
+		_,prediction = classify(X,W_array,b_array)
+
+	a =str(class_list[np.argmax(prediction)])
+	
+	return a

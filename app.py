@@ -5,7 +5,7 @@ import trainnew
 
 @app.route('/')
 def homepage():
-	a = trainnew.ivan('asdad')
+	a = trainnew.class1('asdad')
 	# a = trainnew.b()
 	return a
     # the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
@@ -18,8 +18,11 @@ def homepage():
     # """.format(time=the_time)
 @app.route('/<test>')
 def homeepage(test):
-    a = trainnew.ivan('asdad')
-	return render_template('hello.html', hasil=a)
+	return render_template('hello.html', hasil=trainnew.class1("asdasd"))
+    
+@app.route('/class/<cl>')
+def homeepager(cl):
+    return render_template('class.html', hasil=trainnew.class(cl))
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
