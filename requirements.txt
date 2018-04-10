@@ -1,6 +1,6 @@
-Flask
+Flask==0.12.2
 gunicorn
-numpy
-tensorflow
-matplotlib
-Pillow
+numpy==1.13.3
+tensorflow==1.4.0
+matplotlib==2.1.1
+Pillow==4.3.0
