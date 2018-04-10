@@ -1,8 +1,6 @@
 from flask import Flask, render_template
 from datetime import datetime
 
-import trainnew
-
 import os, sys
 import matplotlib
 matplotlib.use('Agg')
@@ -15,6 +13,7 @@ from random import shuffle
 from random import randint
 import urllib.request
 from io import BytesIO
+
 app = Flask(__name__)
 # @app.route('/')
 # def homepage():
