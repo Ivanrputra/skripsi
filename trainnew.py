@@ -483,7 +483,6 @@ def class1(img):
 	return a
 
 def classi(img):
-	aaa = "asas"
 	line = "SVM"
 	W,b = create_variables(num_classes)
 	mode_path = os.path.join(save_path, line)
